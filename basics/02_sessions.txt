@@ -1,0 +1,80 @@
+what is state?
+          Stateful protocol
+          Stateful protocol require server to save the status and session information.
+          eg - FTP
+
+          Stateless protocol
+          Stateless protocol does not require the server to retain the server information or 
+          eg- HTTP
+
+
+Express Sessions:-
+            An attempt to make our session stateful.
+            Ex:-     
+                for adding items in cart before loggin in a temporary storage (converting our sessions into cookies) coz cookies are still present in any route once send but sessions are only for that http route so that we use express-sessions.     
+                (session send data to server from client and cookies sent data to client)
+
+
+  how to use :-
+             const session = require("express-session");   
+             
+             
+             //middleware
+                      // app.use(session({secret : "mysuperasecrets"}));  //option secret is required and there are many options available in the documentation in npm but those are not required.
+                                                 //secrets must be an env variable.
+                       app.use(session({secret : "mysuprasecrets" , resave : false , saveUninitialized : true}));  //options we should use always resave : false will now ensure if session is not modified then need not to resave it otherwise it will store again.[uninitialised : true ensure the sessions which are not initialise need not to save]
+                           |
+                           |_____> use this one always to protect server from dericated wala msg.
+
+
+
+
+             //route 
+                      app.get("/test",(req,res)=>{
+                          res.send("test successful!");  //here in the cookie we get a new value wit key "connection.sid" where sid --> session id.
+                                       //imp NOTE :- session id that are stored will remain same for that user even we open the same url in a new tab in same browser.
+                                       // but it will 100% differ if we running the same url in different machine .
+                                       // or even if we run same url in a different browser then sid also differ
+                                       // actually we can say it considere a browser as a unique user at a machine.
+
+                                       //ex:- we are adding items in a cart in our account and opening it in new tab then there will be items remain same.
+                                       // but opening in a new browser then it will surely changed.
+                         });              
+
+
+
+   //new way for same middleware                      
+                                const sessionOptions = {          //sessions options (for easy navigation) use as a variable
+                                    secret : "mysuprasecrets",
+                                    resave : false , 
+                                    saveUninitialized : true
+                                }
+
+                                app.use(session(sessionOptions)); 
+
+
+                                //tracking req on this url  ------ practical use
+                                app.get("/reqcount" , (req , res)=>{
+                                if(req.session.count){            //count is a session variable.
+                                    req.session.count++;           // (no matter req in a new tab it will increase but the condition is only in a same browser and a single machine and for different machine or different browser it will again start from 1)   
+                                }else{
+                                    req.session.count = 1;          //1st time initialisation
+                                }                                 // these are temporary storage which is not good at production lavel (their we will use session stores (in future))
+
+                                res.send(`you sent a request ${req.session.count} times`);   //with the help of sessions we are able to send different res on a same url
+                                });
+
+
+
+                                //practical use url :- /register?name=ujjawal ---> ujjawal  and if go to url :- /hello ----> hello ujjawal
+                                app.get("/register" , (req,res)=>{
+                                let {name = "anonymousDefault"} = req.query;
+                                // console.log(req.session);
+                                req.session.name = name;           //now name is a variable and can be also use in different routes
+                                console.log(req.session.name);
+                                res.send(name);
+                                })
+
+                                app.get("/hello" , (req,res)=>{
+                                res.send(`hello ${req.session.name}`);  //using session variable in new route
+                                })

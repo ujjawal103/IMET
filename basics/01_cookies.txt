@@ -1,0 +1,37 @@
+cookies:-
+        web cookies:-
+                      HTTP cookies are small blocks of data created by a web server while a user is browsing a website and placed on the user's computer or other device by the user's web browser.
+
+middleware it used:-
+                   // app.use(cookieParser());      //to parse cookies we use this middleware.
+                   app.use(cookieParser("secretcode"));  //for signed cookies and encoded format to store values.
+
+
+ //learning cookies
+    // app.get("/getcookies" , (req,res)=>{
+    //   res.cookie("greet", "hello");       //greet is the variable and its value is hello (cookies ---> once send cookie on browser it stored their for every routes without using database)
+    //   res.cookie("madeIn", "india");      // like key pair values we are sending
+    //   res.send("sent you a cookie");
+    // })
+
+
+
+app.get("/",function(req,res){
+  //console.log(req.cookies);       //it will return cookies that are not signed, //directly we can't use cookies like this we need to parse using cookie-parser package.
+  res.send("hello ji mai hi hu root");
+});
+
+
+
+//signed cookies
+app.get("/getsignedcookies" , (req,res)=>{     
+  res.cookie("made-In", "india",{signed : true});   //signed cookies just ensure that the cookies we sented are not changed on browser and if they change then it will not considered and return it. 
+  res.send("sent you a cookie");
+})
+
+app.get("/verifysignedcookies" , (req,res)=>{
+  console.log(req.signedCookies);     //only returns signed cookies those are not change anyhow (if completely value changed by inspecting--> application --> cookies then it will return empty object or not return that key value in which changes occured)  , (if changes in only a part fo value and rests of keeping encoded then it will show false for that key (coz main value is also visible in cookies after encryption also) so signed cookies are only use for sending some data and verifying it to not changed)
+})
+
+
+// mostly we use -----------> signedCookies i think                     

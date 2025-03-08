@@ -1,0 +1,187 @@
+<% layout("/layouts/boilerplate.ejs") %>
+ 
+
+
+
+
+
+<div class="filter-container">
+  <div class="filters">
+    <div class="filter-item text-center">
+      <i class="ri-money-dollar-circle-line ri-2x"></i>
+      <p>Price</p>
+    </div>
+  
+    <!-- Filter: Location -->
+    <div class="filter-item text-center">
+      <i class="ri-map-pin-line ri-2x"></i>
+      <p>Location</p>
+    </div>
+  
+    <!-- Filter: Ratings -->
+    <div class="filter-item text-center">
+      <i class="ri-star-line ri-2x"></i>
+      <p>Ratings</p>
+    </div>
+  
+    <!-- Filter: Availability -->
+    <div class="filter-item text-center">
+      <i class="ri-calendar-line ri-2x"></i>
+      <p>Availability</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-code-line ri-2x"></i>
+      <p>Developer</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-megaphone-line ri-2x"></i>
+      <p>Digital Marketer</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-pen-nib-line ri-2x"></i>
+      <p>Content Writer</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-camera-line ri-2x"></i>
+      <p>Photographer</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-paint-brush-line ri-2x"></i>
+      <p>Graphic Designer</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-mic-line ri-2x"></i>
+      <p>Voice Artist</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-music-line ri-2x"></i>
+      <p>Music Producer</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-briefcase-line ri-2x"></i>
+      <p>Business Consultant</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-movie-line ri-2x"></i>
+      <p>Video Editor</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-pencil-ruler-2-line ri-2x"></i>
+      <p>Architect</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-microscope-line ri-2x"></i>
+      <p>Researcher</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-book-2-line ri-2x"></i>
+      <p>Teacher</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-hospital-line ri-2x"></i>
+      <p>Doctor</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-server-line ri-2x"></i>
+      <p>IT Support</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-hand-coin-line ri-2x"></i>
+      <p>Financial Advisor</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-heart-pulse-line ri-2x"></i>
+      <p>Fitness Trainer</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-brush-4-line ri-2x"></i>
+      <p>Makeup Artist</p>
+    </div>
+    <div class="filter-item text-center">
+      <i class="ri-scissors-cut-line ri-2x"></i>
+      <p>Hair Stylist</p>
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <% for(let listing of allListings){ %>
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="card col mt-3 listing-card">
+              <img src="<%= listing.image.url %>" class="card-img-top" alt="listings" style="height: 20rem;">
+              
+              <div class="card-img-overlay">
+                <small><%= listing.name %></small>
+              </div>
+              
+              <div class="card-body">
+                <p class="card-text">
+                 <b class="profIndex"> <%= listing.profession %> </b> <br>
+                  ₹ <%= listing.price.toLocaleString("en-IN") %> / hour
+                </p>
+              </div>
+            </div>
+            </a>
+          <% } %>  
+    </div>
+    
+
+
+    
+    <script>
+      let profIndex = document.querySelectorAll(".profIndex");
+      for(let prof of profIndex){
+        let profContent = prof.innerText.toString();
+        if(profContent.length > 82){
+          prof.innerText = `${profContent.slice(0,82)} ...`;
+        }
+      }
+    </script> 
+
+
+
+<style>
+ /* Scrollable Filter Container */
+.filter-container {
+    overflow-x: auto; /* Enables horizontal scrolling */
+    white-space: nowrap; /* Prevents items from wrapping */
+    padding: 10px 0;
+}
+
+/* Filters inside */
+.filters {
+    display: flex;
+    gap: 15px;
+    flex-wrap: nowrap; /* Keeps items in one line */
+    padding-bottom: 10px;
+}
+
+/* Individual Filter Items */
+.filter-item {
+    flex: 0 0 auto; /* Ensures items do not shrink */
+    text-align: center;
+    min-width: 120px; /* Keeps each item evenly spaced */
+    padding: 10px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover Effect */
+.filter-item:hover {
+    transform: scale(1.05);
+}
+
+/* Hide scrollbar on Webkit browsers */
+.filter-container::-webkit-scrollbar {
+    display: none;
+}
+
+</style>
+
+
+  
+

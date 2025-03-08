@@ -1,0 +1,77 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+
+
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+            <h2>Edit A Listing</h2> 
+            <form method="post" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" name="listing[name]" id="name" required value="<%= listing.name %>" class="form-control">
+                    <div class="invalid-feedback">
+                        Please enter your name.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="profession" class="form-label">Profession</label>
+                    <textarea type="text" name="listing[profession]" id="profession" required rows="6" cols="12" class="form-control" ><%= listing.profession %></textarea>
+                    <div class="invalid-feedback">
+                        Profession should be valid.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Original Image</label> <br>
+                    <img src="<%= originalImageUrl %>" alt="" height="200px">
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">New Image Link</label>
+                    <input type="file" name="listing[image]" id="image" class="form-control">
+                    <div class="invalid-feedback">
+                        Image can't be null.
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price" class="form-label">Price/hour</label>
+                        <input type="number" min="0" name="listing[price]" id="price" value="<%=listing.price %>" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Price should be valid.
+                        </div>
+                    </div>
+    
+    
+                    <div class="mb-3 col-md-8">
+                        <label for="country" class="form-label">Country</label>
+                        <input type="text" name="listing[country]" id="country" value="<%= listing.country %> " class="form-control" required>
+                        <div class="invalid-feedback">
+                            Country name should be valid.
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" name="listing[location]" id="location" value="<%= listing.location %> " class="form-control" required>
+                    <div class="invalid-feedback">
+                        Enter a valid location.
+                    </div>
+                </div>
+
+                
+            
+                
+            
+                <button type="submit" class="btn btn-primary mb-3">Submit</button>
+            </form>
+    </div>
+  </div>
+    <!-- here the feilds are setted in the object(listing) with keys in it directly -->
+     <!-- <script src="/js/formvalidation.js"></script> -->
+</body>

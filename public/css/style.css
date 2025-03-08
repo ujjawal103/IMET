@@ -1,0 +1,295 @@
+html, body {
+    height: 100%; /* Full height for the page */
+    margin: 0; /* Remove default margin */
+    display: flex; /* Flex layout for body */
+    flex-direction: column; /* Align items vertically */
+    font-family: "Plus Jakarta Sans", serif !important;
+    font-optical-sizing: auto !important;
+    /* font-weight: 400; */
+    font-style: normal !important;
+  }
+
+  .container{
+    flex: 1;
+  }
+
+  /* Navbar styling */
+  .navbar {
+    background-color: white !important; /* Set navbar background to white */
+    border-bottom: 2px solid navy; /* Add a navy blue border at the bottom */
+    z-index: 10000 !important;
+  }
+
+  /* Navbar link hover effect */
+  .navbar-nav .nav-link {
+    transition: transform 0.2s, color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+  }
+
+  .navbar-nav .nav-link:hover {
+    transform: scale(1.1); /* Make the link scale slightly larger */
+    color: #0d6efd !important; /* Change text color to blue on hover */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  */
+    transition: all 0.3s ease; /* Ensure smooth transition */
+  }
+
+  .btn-nav{
+    border: 1px solid grey;
+    /* background-color: white; */
+    span{
+      color: black;
+      text-align: center !important;
+    }
+  }
+  .navbar-nav .newList{
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    border-radius: 6px !important;
+    border: 2px green solid !important;
+    
+  }
+
+  .navbar-nav .newList:hover{
+    background-color: rgb(168, 163, 163) !important;
+    color: white !important;
+    transform: none !important; 
+}
+
+  /* Button hover effects */
+  .btn {
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions for button */
+  }
+
+  .btn:hover {
+    transform: scale(1.1); /* Scale button on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow to button */
+    transition: all 0.3s ease; /* Smooth transition */
+  }
+
+  /* Navbar toggler button animation */
+  .navbar-toggler-icon {
+    transition: transform 0.2s ease;
+  }
+
+  .navbar-toggler-icon:hover {
+    transform: rotate(90deg); /* Rotate the toggler icon on hover */
+  }
+
+  @media (max-width: 766px){
+    .newList{
+     margin-bottom: 10px !important;
+    }
+  }
+
+
+
+
+
+
+
+  /* footer */
+  /* General Styles for Footer */
+footer {
+  background-color: #2c3e50; /* Dark background for footer */
+  color: #ecf0f1; /* Light text color */
+  padding: 20px;
+  text-align: center;
+  
+}
+
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer div {
+  margin: 5px;
+}
+
+.links-footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.links-footer a {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.links-footer a:hover {
+  color: #3498db; /* Change to blue on hover */
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links i {
+  font-size: 20px;
+  color: #ecf0f1;
+  transition: color 0.3s ease;
+}
+
+.social-links i:hover {
+  color: #3498db; /* Change color to blue on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .footer {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .links-footer {
+      justify-content: center;
+      margin-top: 10px;
+  }
+
+  .social-links {
+      justify-content: center;
+      margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+      padding: 15px;
+  }
+
+  .links-footer a {
+      font-size: 12px;
+  }
+
+  .social-links i {
+      font-size: 18px;
+  }
+}
+
+/* card styling on index page */
+
+.listing-card{
+  border: none !important;
+  margin-bottom: 2rem;
+}
+
+.card-img-top{
+  border-radius: 1rem !important;
+  width: 100% !important;
+  min-height: 400px !important;
+  object-fit: cover !important;
+}
+
+.card-body{
+  padding: 0 !important;
+}
+
+.card-text p{
+  font-weight: 400 !important;
+}
+
+.listing-link{
+  text-decoration: none;
+}
+
+.card-img-overlay{
+  small{
+    opacity: 1 !important;
+    font-size: x-small;
+    background-color: black;
+    color: gold;
+    padding: 3px 5px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 0px;
+
+  }
+}
+.card-img-overlay:hover{
+  background-color: white;
+  opacity: 0.2;
+}
+
+
+
+
+/* show */
+.card{
+  margin-bottom: 0px !important;
+}
+.show-image{
+  height: 40vh;
+}
+
+.show-btns{
+  display: flex;
+  gap: 30px;
+
+}
+
+
+
+
+/* error.ejs */
+.alert-heading{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: oblique;
+  font-variant: small-caps;
+}
+.image-alerts{
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5%;
+}
+.image-alerts img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5%;
+}
+
+
+/* flash msg */
+.flash{
+  width: 100vw !important;
+  position: absolute !important;
+  margin-top: 130px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+}
+.flashMsg{
+  position: fixed !important;
+  z-index: 1000 !important;
+  background-color: rgb(58, 56, 56) !important;
+  border-radius: 25px !important;
+  color: rgb(235, 235, 213) !important;
+  padding: 8px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+.flashMsg .flashSign{
+  padding-right: 10px;
+  color: green !important;
+  i{
+    font-size: larger !important;
+    margin-left: 10px !important;
+  }
+}
+.flashMsg .failed{
+  padding-right: 10px;
+  color: rgb(185, 9, 9) !important;
+}

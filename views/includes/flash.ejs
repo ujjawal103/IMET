@@ -1,0 +1,24 @@
+<div class="flash ">
+    <% if(success[0] || (success && success.length)){ %>   <!-- success is an array actually -->
+    <div class="alert alert-success alert-dismissible fade show flashMsg" role="alert">
+        <div>
+            <%= success %>  <!--  flash message -->
+        </div>
+        <span class="flashSign"><i class="ri-checkbox-circle-line"></i></span>
+    </div>
+    <% } %>
+</div>
+
+<div class="flash">
+    <% if(error && error.length){ %>  
+        <div class="alert alert-danger alert-dismissible fade show flashMsg" role="alert">
+            <div>
+                <%= error %>  <!--  flash message -->
+            </div>
+            <span class="flashSign failed"><i class="ri-close-circle-fill"></i></span>
+        </div>
+    <% } %>
+</div>
+
+
+

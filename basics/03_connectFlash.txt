@@ -1,0 +1,78 @@
+connect-flash:-(A NPM PACKAGE)  ------------------------------> flash messages are those which shown for a time and again removed from page if restart the route (even it will be the same route [it's simply mean :- if we go to the url via redirecting then it will show msg and if restart now that url then it will removed and never shown if againg we are not going throug redirecting])
+             //flash works when session installed.
+             The flash ia a special area of the session used for storing messages .
+             Messages are written to the flash and cleared after being displayed to the user.
+
+             some popup messages show to users on page just for seconds whenever something happens (like ---> successfully login , user deleted , post archived ....)
+
+             mostly use when we are redirecting to a route.
+
+             middleware:-
+                       app.use(flash());
+
+             Syntax:-
+                 req.flash('key' , 'value');       //take values in key-value pair form      
+
+             Ex:-
+                 app.get("/flash",(req,res)=>{
+                    req.flash('info' , 'Flash is back!'); 
+                    res.redirect("/);
+                 });    
+                 
+                 app.get("/",(req,res)=>{
+                    console.log(req.flash("info"));   --------> accessing our flash message whose key is "info"
+                    res.send("we are at home page");
+                 })
+
+                 output :-
+                         ['Flash is back!']
+
+                          
+                //now we can also render these flash messages from views folder.          
+                 app.get("/",(req,res)=>{
+                    res.render("page.ejs" , {msg : req.flash("info")});
+                 })
+
+
+
+
+A BETTER WAY TO USE FLASH MESSAGES //helpful in the case when there is more flash messages based on condition like -----
+
+             app.get("/login",(req,res)=>{
+                    if(user == "login Successful"){
+                        req.flash("success", "user registered successfully");
+                    }else{
+                        req.flash("error" , "user not registered");
+                    }
+                     res.redirect("/);
+                 }); 
+
+
+              app.get("/",(req,res)=>{
+                    res.locals.successMsg = req.flash("success");
+                    res.locals.errorMsg = req.flash("error");
+                    res.render("page.ejs");                  //no need to pass explicitly it can be directly use in page.ejs
+                 });
+
+                 now need not to send this variable with render to our ejs file it can be 
+                 directly accessible by 
+                 <%= successMsg %>
+                 <%= errorMsg %>
+
+                 now it will print those message which is not undefined.
+
+
+
+
+
+//Another best way to access flash messages ----> MIDDLEWARE 
+
+app.use((req,res,next) => {
+    res.locals.successMsg = req.flash("success");
+    res.locals.errorMsg = req.flash("error");
+    next();
+})
+
+app.get("/",(req,res)=>{
+    res.render("page.ejs");  //now routes look clear.               
+});

@@ -1,0 +1,81 @@
+Authentication:-
+               (signup/login)
+               Authentication is the process of verifying who someone is.
+
+Authorization :-
+              Authorization is the process of verifying what specific application , files , and data a user has access to.
+
+
+
+Storing passwords:-
+              We never store the password as it is . We store their hashed form  
+
+              hashed using Hashing function 
+              Ex:-
+                 ujjawal1234 ----> Hashing Function -----> dhfud3824735ty4387gf7tyr74gf4ty75g47tg547ty54t8754ht74y5t754ghf754ygbvtrg34yrr364 
+
+              NOTE :- but if we need to compare password at login time then it will compare with original internally.
+                      by again passing entered password into hashing function [for same input the hashing function return same output always]
+
+
+    characteristic's of HASHING FUNCTIONS:-
+                (1) :- For every input , there is a fixed length output.
+                (2) :- They are one-way functions, we can't get input from output.
+                (3) :- For a different input, there is a different output but of same length.
+                (4) :- Small changes in input should bring large changes in output
+
+    SOME HASHING FUNCTIONS:-
+                    (.) :- SHA256 Hash generator.   (generally not good one coz it's very fast and we need not to hash our passwords very quicky coz they can be mathed by hackers early).
+                    (.) :- MD5
+                    (.) :- CRC
+                    (.) :- BECRYPT               
+
+SALTING:-
+        Password salting is a technique to protect passwords stored in database by adding a string of 32 or more characters and then hashing them.
+        (basically it add some extra characters or special characters in normal passwords so that can't be hack easily).
+
+
+NOTE :-  there are multiple tools present in node for hashing the passwords or we(companies) can create their own hashing functions.
+         we use PASSPORTS tool for hashing.       
+
+
+PASSPORT:-
+         A library that help in authentication
+         FEATURES:-
+                (1) :- login with username and passwords
+                (2) :- login with google
+                (3) :- login with facebook
+                (4) :- login with github       ..etc.  
+
+
+   HOW TO USE:-
+                1) npm i passport          --> library installed
+                2) npm i passport-local    ---> (Local stategy) for basic login feature (login with username and password only)
+                3) npm i passport-local-mongoose  --> install only when we use mongo as our database otherwise not need (basically it is a plugin that helps more in aur authentication).
+
+
+CONFIGURING STRATEGY:-
+               middlewares used:-
+                               (1) :- app.use(passport.initialize())
+                               (2) :- app.use(passport.session());
+                                            //A web application needs the ability to identify users as they browse from page to page . this series of requests and responses , each associated with the same user , is known as a session.
+
+
+
+
+ 
+
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+EX for a user signup:-
+
+app.get("/demouser" , async (req,res) =>{
+  let fakeUser = new User({
+    email : "student@gmail.com",
+    username : "suprajaiss",          //need not to define username in schema coz, passport-local-mongoose already defined [username and password in hash for and a salt]  ----------> that's why helpful our plugin.
+  });
+  let registeredUser = await User.register(fakeUser , "It'sApassword"); //here we pass our password with user,  
+                                                                   //instead of save here we use resister a static method powered by passport-local-mongoose in the documentation from npm.  
+                                                                   //this method also check internally in database for user with same username if found same username then it will not saved and generate a error.
+  res.send(registeredUser);
+})                                          

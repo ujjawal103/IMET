@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <!-- Brand logo -->
+      <a class="navbar-brand fw-bold text-dark" href="/listings">
+        <img src="/images/logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-center">
+        IMet
+      </a>
+     
+      <!-- Toggler button for mobile view -->
+      <button class="navbar-toggler btn-nav" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">| | |</span>
+      </button>
+      
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <div class="searchBtn me-md-5">
+            <form class="d-flex " role="search">
+              <input class="form-control me-2" type="search" placeholder="Search Profession" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+          <a class="nav-link text-dark fw-semibold" href="/">Home</a>
+          <a class="nav-link text-dark fw-semibold" href="#">Pricing</a>
+          <a class="nav-link text-dark fw-semibold" href="#">About Us</a>
+          <a class="nav-link text-dark fw-semibold" href="#">Contact</a>
+          <a class="nav-link text-dark fw-semibold btn btn-secondary newList" href="/listings/new">Create A new Listing</a>
+          <!-- Sign Up and Login buttons -->
+          <div class="d-flex ms-3">
+            <% if(!currUser){ %>
+            <a href="/users/login" class="btn btn-outline-primary me-2">Login</a>
+            <a href="/users/signup" class="btn btn-primary me-2">Sign Up</a>
+            <% } %>
+            <% if(currUser){ %>
+            <a href="/users/logout" class="btn btn-outline-dark ">Log out</a>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  

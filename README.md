@@ -1,9 +1,3 @@
-Absolutely Ujjawal — since this is your first *major* project and you're posting it on GitHub (which future employers or collaborators may see), I will write you a clean, very impressive, easy-to-read `README.md` that reflects all the good parts of your project.
-
-Here’s the suggested content for your `README.md` 👇
-
----
-
 # IMET — Human Rental System 🧑‍💼⚙️
 
 IMET is a full-stack Human Rental System platform where users can list themselves for work and others can hire them for various services.

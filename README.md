@@ -10,15 +10,15 @@ View Live At :- https://imet.onrender.com/
 
 ## 🚀 Features
 
-✅ User Registration and Login
-✅ Secure Authentication & Authorization
-✅ Users can list themselves for hire, specifying profession and details
-✅ Other users can view profiles and leave reviews
-✅ Profile management (CRUD)
-✅ RESTful APIs
-✅ Follows MVC design pattern
-✅ MongoDB for database
-✅ Full-stack functioning project with EJS for dynamic pages
+✅ User Registration and Login </br>
+✅ Secure Authentication & Authorization </br>
+✅ Users can list themselves for hire, specifying profession and details </br>
+✅ Other users can view profiles and leave reviews </br>
+✅ Profile management (CRUD) </br>
+✅ RESTful APIs </br>
+✅ Follows MVC design pattern </br>
+✅ MongoDB for database </br>
+✅ Full-stack functioning project with EJS for dynamic pages </br>
 
 ---
 
